@@ -45,10 +45,10 @@ abstract class BaseRepository<TDocument> {
     options,
     projection,
   }: {
-    filter: QueryFilter<TDocument>;
+    filter?: QueryFilter<TDocument>;
     options?: QueryOptions<TDocument>;
     projection?: ProjectionType<TDocument>;
-  }): Promise<HydratedDocument<TDocument>[] | null> {
+  } = {}): Promise<HydratedDocument<TDocument>[] | null> {
     return this.model
       .find(filter, projection)
       .sort(options?.sort)

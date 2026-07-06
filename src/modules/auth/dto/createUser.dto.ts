@@ -21,7 +21,6 @@ import {
 @ValidatorConstraint({ name: 'MatchKeys', async: false })
 export class MatchKeys implements ValidatorConstraintInterface {
   validate(value: string, args: ValidationArguments) {
-
     return value === args.object[args.constraints[0]];
   }
 
@@ -72,4 +71,14 @@ export class CreateUserDto {
   @Optional()
   @IsString()
   phone: string;
+}
+
+export class signInDto {
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
+
+  @IsNotEmpty()
+  @IsStrongPassword()
+  password: string;
 }
