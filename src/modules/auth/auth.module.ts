@@ -14,7 +14,7 @@ import multer from 'multer';
 import { S3Service } from 'src/common/services/s3.service';
 
 @Module({
-  imports: [UserModel, RedisModule, S3Service],
+  imports: [UserModel, RedisModule],
   controllers: [UserController],
   providers: [
     UserService,
@@ -22,6 +22,7 @@ import { S3Service } from 'src/common/services/s3.service';
     RedisService,
     TokenService,
     JwtService,
+    S3Service,
   ],
   exports: [],
 })

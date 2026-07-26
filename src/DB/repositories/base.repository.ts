@@ -99,14 +99,14 @@ abstract class BaseRepository<TDocument> {
     populate,
     search,
   }: {
-    page: number;
-    limit: number;
+    page?: number;
+    limit?: number;
     sort?: any;
     populate?: any;
     search?: QueryFilter<T>;
   }) {
     page = +page! || 1;
-    limit = +limit! || 1;
+    limit = +limit! || 2;
 
     if (page < 1) page = 1;
     if (limit < 1) limit = 1;

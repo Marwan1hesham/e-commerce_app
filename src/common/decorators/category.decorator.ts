@@ -1,0 +1,19 @@
+import {
+  ValidationArguments,
+  ValidatorConstraint,
+  ValidatorConstraintInterface,
+} from 'class-validator';
+import { Types } from 'mongoose';
+
+@ValidatorConstraint({ name: 'ValidateIds', async: false })
+export class ValidateIds implements ValidatorConstraintInterface {
+  validate(value: string[], args?: ValidationArguments) {
+    return (
+      value.filter((id) => Types.ObjectId.isValid(id)).length == value.length
+    );
+  }
+
+  defaultMessage(args?: ValidationArguments) {
+    return `Some of Ids are invalid`;
+  }
+}
